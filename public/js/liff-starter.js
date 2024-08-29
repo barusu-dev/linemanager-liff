@@ -92,11 +92,11 @@ function initializeApp() {
               response.data.name
             document.getElementById("url").innerText = "line://ti/p/" + basicid
             console.log(response)
-            // liff.openWindow({
-            //     url: "https://line.me/R/ti/p/,
-            //     external: false
-            // });
-            // liff.closeWindow();
+            liff.openWindow({
+              url: "https://line.me/R/ti/p/",
+              external: false,
+            })
+            liff.closeWindow()
           })
       }
     })
