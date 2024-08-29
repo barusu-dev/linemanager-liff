@@ -70,7 +70,9 @@ function initializeApp() {
   const idToken = liff.getIDToken()
 
   return axios.post("https://line-sample.dx.business/api/liff/post", {
-    idToken: idToken,
+    basicid: basicid,
+    entrance_id: entrance_id,
+    id_token: idToken,
   })
 
   liff
