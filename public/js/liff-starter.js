@@ -77,11 +77,12 @@ function initializeApp() {
 
       if (basicid && entrance_id && userid) {
         return axios.post("https://line-sample.dx.business/api/liff/post", {
-          basicid: basicid,
-          entrance_id: entrance_id,
-          userid: userid,
-          displayname: displayname,
-          pictureurl: pictureurl,
+          //   basicid: basicid,
+          //   entrance_id: entrance_id,
+          //   userid: userid,
+          //   displayname: displayname,
+          //   pictureurl: pictureurl,
+          sample: "hello",
         })
       } else {
         throw new Error("Required parameters are missing")
