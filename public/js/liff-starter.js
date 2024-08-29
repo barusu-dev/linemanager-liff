@@ -49,7 +49,7 @@ function initializeLiff(myLiffId) {
     .init({
       liffId: myLiffId,
     })
-    .then(() => {
+    .then(async () => {
       console.log("LIFF initialized successfully")
       initializeApp()
     })
