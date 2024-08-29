@@ -44,20 +44,17 @@ function initializeLiffOrDie(myLiffId) {
  * @param {string} myLiffId The LIFF ID of the selected element
  */
 function initializeLiff(myLiffId) {
-  console.log(myLiffId)
+  console.log("Initialized with LIFF ID:", myLiffId) // デバッグ用
   liff
     .init({
       liffId: myLiffId,
     })
     .then(() => {
-      // start to use LIFF's api
-      console.log("initializeApp")
+      console.log("LIFF initialized successfully")
       initializeApp()
     })
     .catch((err) => {
-      console.log(err)
-      // document.getElementById("liffAppContent").classList.add('hidden');
-      // document.getElementById("liffInitErrorMessage").classList.remove('hidden');
+      console.error("LIFF initialization failed:", err)
     })
 }
 
