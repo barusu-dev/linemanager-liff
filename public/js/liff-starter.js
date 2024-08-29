@@ -1,10 +1,3 @@
-const axiosConfig = {
-  headers: {
-    Origin: "https://line-liff.dx.business", // 必要に応じて適切なオリジンを指定
-    "Content-Type": "application/json",
-  },
-}
-
 window.onload = function () {
   const useNodeJS = true // if you are not using a node server, set this value to false
   const defaultLiffId = "1655307692-6L8JZ054" // change the default LIFF value if you are not using a node server
@@ -76,13 +69,9 @@ function initializeApp() {
 
   const idToken = liff.getIDToken()
 
-  return axios.post(
-    "https://line-sample.dx.business/api/liff/post",
-    {
-      idToken: idToken,
-    },
-    axiosConfig
-  )
+  return axios.post("https://line-sample.dx.business/api/liff/post", {
+    idToken: idToken,
+  })
 
   liff
     .getProfile()
