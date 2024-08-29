@@ -49,7 +49,7 @@ function initializeLiff(myLiffId) {
     .init({
       liffId: myLiffId,
     })
-    .then(async () => {
+    .then(() => {
       console.log("LIFF initialized successfully")
       initializeApp()
     })
@@ -65,7 +65,6 @@ function initializeApp() {
   var params = new URL(window.location.href).searchParams
   var basicid = params.get("basicid")
   var entrance_id = params.get("entrance_id")
-  var userid = ""
 
   const idToken = liff.getIDToken()
 
@@ -83,7 +82,7 @@ function initializeApp() {
       document.getElementById("url").innerText = "line://ti/p/" + basicid
 
       // LIFFアプリを閉じて友だち追加画面に転送
-      location.href = "line://ti/p/" + basicid
+      window.location.href = "line://ti/p/" + basicid
       liff.closeWindow()
     })
     .catch(function (error) {
