@@ -81,37 +81,10 @@ function initializeApp() {
       document.getElementById("friend_add_button").style.display = "block"
       document.getElementById("displayname").innerText = response.data.name
       document.getElementById("url").innerText = "line://ti/p/" + basicid
-    })
-    .catch(function (error) {
-      console.error("Error in initializeApp:", error)
-    })
 
-  liff
-    .getProfile()
-    .then(function (profile) {
-      userid = profile.userId
-      displayname = profile.displayName
-      pictureurl = profile.pictureUrl
-      userid = "U03e697cbb25d9b0db551ebe26ff35d45" // デバッグ用
-
-      if (basicid && entrance_id && userid) {
-        return axios.post("https://line-sample.dx.business/api/liff/post", {
-          basicid: basicid,
-          entrance_id: entrance_id,
-          userid: userid,
-          displayname: displayname,
-          pictureurl: pictureurl,
-        })
-      } else {
-        throw new Error("Required parameters are missing")
-      }
-    })
-    .then((response) => {
-      document.getElementById("friend_add_button").href =
-        "line://ti/p/" + basicid
-      document.getElementById("friend_add_button").style.display = "block"
-      document.getElementById("displayname").innerText = response.data.name
-      document.getElementById("url").innerText = "line://ti/p/" + basicid
+      // LIFFアプリを閉じて友だち追加画面に転送
+      location.href = "line://ti/p/" + basicid
+      liff.closeWindow()
     })
     .catch(function (error) {
       console.error("Error in initializeApp:", error)
