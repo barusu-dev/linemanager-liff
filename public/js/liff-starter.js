@@ -74,7 +74,7 @@ function initializeApp() {
       userid = profile.userId
       displayname = profile.displayName
       pictureurl = profile.pictureUrl
-      // userid = "U03e697cbb25d9b0db551ebe26ff35d45"
+      userid = "U03e697cbb25d9b0db551ebe26ff35d45"
       if (basicid && entrance_id && userid) {
         axios
           .post("https://line-sample.dx.business/api/liff/post", {
@@ -92,11 +92,11 @@ function initializeApp() {
               response.data.name
             document.getElementById("url").innerText = "line://ti/p/" + basicid
             console.log(response)
-            liff.openWindow({
-              url: "https://line.me/R/ti/p/",
-              external: false,
-            })
-            liff.closeWindow()
+            // liff.openWindow({
+            //   url: "https://line.me/R/ti/p/",
+            //   external: false,
+            // })
+            // liff.closeWindow()
           })
       }
     })
