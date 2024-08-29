@@ -69,11 +69,22 @@ function initializeApp() {
 
   const idToken = liff.getIDToken()
 
-  return axios.post("https://line-sample.dx.business/api/liff/post", {
-    basicid: basicid,
-    entrance_id: entrance_id,
-    id_token: idToken,
-  })
+  return axios
+    .post("https://line-sample.dx.business/api/liff/post", {
+      basicid: basicid,
+      entrance_id: entrance_id,
+      id_token: idToken,
+    })
+    .then((response) => {
+      document.getElementById("friend_add_button").href =
+        "line://ti/p/" + basicid
+      document.getElementById("friend_add_button").style.display = "block"
+      document.getElementById("displayname").innerText = response.data.name
+      document.getElementById("url").innerText = "line://ti/p/" + basicid
+    })
+    .catch(function (error) {
+      console.error("Error in initializeApp:", error)
+    })
 
   liff
     .getProfile()
