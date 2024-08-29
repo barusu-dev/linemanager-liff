@@ -68,45 +68,42 @@ function initializeApp() {
   var entrance_id = params.get("entrance_id")
   var userid = ""
 
-  liff.ready().then(() => {
-    liff
-      .getProfile()
-      .then(function (profile) {
-        userid = profile.userId
-        displayname = profile.displayName
-        pictureurl = profile.pictureUrl
-        userid = "U03e697cbb25d9b0db551ebe26ff35d45"
-        if (basicid && entrance_id && userid) {
-          axios
-            .post("https://line-sample.dx.business/api/liff/post", {
-              basicid: basicid,
-              entrance_id: entrance_id,
-              userid: userid,
-              displayname: displayname,
-              pictureurl: pictureurl,
-            })
-            .then((response) => {
-              document.getElementById("friend_add_button").href =
-                "line://ti/p/" + basicid
-              document.getElementById("friend_add_button").style.display =
-                "block"
-              document.getElementById("displayname").innerText =
-                response.data.name
-              document.getElementById("url").innerText =
-                "line://ti/p/" + basicid
-              console.log(response)
-              // liff.openWindow({
-              //   url: "https://line.me/R/ti/p/",
-              //   external: false,
-              // })
-              // liff.closeWindow()
-            })
-        }
-      })
-      .catch(function (error) {
-        console.error(error)
-      })
-  })
+  liff
+    .getProfile()
+    .then(function (profile) {
+      userid = profile.userId
+      displayname = profile.displayName
+      pictureurl = profile.pictureUrl
+      userid = "U03e697cbb25d9b0db551ebe26ff35d45"
+      if (basicid && entrance_id && userid) {
+        axios
+          .post("https://line-sample.dx.business/api/liff/post", {
+            basicid: basicid,
+            entrance_id: entrance_id,
+            userid: userid,
+            displayname: displayname,
+            pictureurl: pictureurl,
+          })
+          .then((response) => {
+            document.getElementById("friend_add_button").href =
+              "line://ti/p/" + basicid
+            document.getElementById("friend_add_button").style.display = "block"
+            document.getElementById("displayname").innerText =
+              response.data.name
+            document.getElementById("url").innerText = "line://ti/p/" + basicid
+            console.log(response)
+            // liff.openWindow({
+            //   url: "https://line.me/R/ti/p/",
+            //   external: false,
+            // })
+            // liff.closeWindow()
+          })
+      }
+    })
+    .catch(function (error) {
+      console.error(error)
+    })
+
   // displayLiffData();
   // displayIsInClientInfo();
   // registerButtonHandlers();
