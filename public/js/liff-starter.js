@@ -67,6 +67,12 @@ function initializeApp() {
   var entrance_id = params.get("entrance_id")
   var userid = ""
 
+  const idToken = liff.getIDToken()
+
+  return axios.post("https://line-sample.dx.business/api/liff/post", {
+    idToken: idToken,
+  })
+
   liff
     .getProfile()
     .then(function (profile) {
@@ -77,12 +83,11 @@ function initializeApp() {
 
       if (basicid && entrance_id && userid) {
         return axios.post("https://line-sample.dx.business/api/liff/post", {
-          //   basicid: basicid,
-          //   entrance_id: entrance_id,
-          //   userid: userid,
-          //   displayname: displayname,
-          //   pictureurl: pictureurl,
-          sample: "hello",
+          basicid: basicid,
+          entrance_id: entrance_id,
+          userid: userid,
+          displayname: displayname,
+          pictureurl: pictureurl,
         })
       } else {
         throw new Error("Required parameters are missing")
