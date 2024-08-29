@@ -100,7 +100,9 @@ function initializeApp() {
           })
       }
     })
-    .catch(function (error) {})
+    .catch(function (error) {
+      console.error(error)
+    })
 
   // displayLiffData();
   // displayIsInClientInfo();
