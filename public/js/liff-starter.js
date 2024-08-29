@@ -73,46 +73,32 @@ function initializeApp() {
       userid = profile.userId
       displayname = profile.displayName
       pictureurl = profile.pictureUrl
-      userid = "U03e697cbb25d9b0db551ebe26ff35d45"
+      userid = "U03e697cbb25d9b0db551ebe26ff35d45" // デバッグ用
+
       if (basicid && entrance_id && userid) {
-        axios
-          .post("https://line-sample.dx.business/api/liff/post", {
-            basicid: basicid,
-            entrance_id: entrance_id,
-            userid: userid,
-            displayname: displayname,
-            pictureurl: pictureurl,
-          })
-          .then((response) => {
-            document.getElementById("friend_add_button").href =
-              "line://ti/p/" + basicid
-            document.getElementById("friend_add_button").style.display = "block"
-            document.getElementById("displayname").innerText =
-              response.data.name
-            document.getElementById("url").innerText = "line://ti/p/" + basicid
-            console.log(response)
-            // liff.openWindow({
-            //   url: "https://line.me/R/ti/p/",
-            //   external: false,
-            // })
-            // liff.closeWindow()
-          })
+        return axios.post("https://line-sample.dx.business/api/liff/post", {
+          basicid: basicid,
+          entrance_id: entrance_id,
+          userid: userid,
+          displayname: displayname,
+          pictureurl: pictureurl,
+        })
+      } else {
+        throw new Error("Required parameters are missing")
       }
     })
+    .then((response) => {
+      document.getElementById("friend_add_button").href =
+        "line://ti/p/" + basicid
+      document.getElementById("friend_add_button").style.display = "block"
+      document.getElementById("displayname").innerText = response.data.name
+      document.getElementById("url").innerText = "line://ti/p/" + basicid
+    })
     .catch(function (error) {
-      console.error(error)
+      console.error("Error in initializeApp:", error)
     })
 
-  // displayLiffData();
-  // displayIsInClientInfo();
-  // registerButtonHandlers();
-
-  // // check if the user is logged in/out, and disable inappropriate button
-  // if (liff.isLoggedIn()) {
-  //     document.getElementById('liffLoginButton').disabled = true;
-  // } else {
-  //     document.getElementById('liffLogoutButton').disabled = true;
-  // }
+  // その他の処理...
 }
 
 /**
