@@ -51,6 +51,7 @@ function initializeLiff(myLiffId) {
     })
     .then(() => {
       // start to use LIFF's api
+      console.log("initializeApp")
       initializeApp()
     })
     .catch((err) => {
